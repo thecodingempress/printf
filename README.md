@@ -1,0 +1,1 @@
+This is a project to recreate the custom Printf function available from the standard library. The function should handle format specifiers, flags and errors while effectively allocating and managing memory.
