@@ -14,12 +14,12 @@ int _printf(const char *format, ...)
 	int print_char(va_list args);
 	int print_string(va_list args);
 	int print_percent(void);
+	int print_num(va_list args);
 	int handle_format(char format, va_list args);
 	va_list(args);
 	if (!format)
-	{
 		return (-1);
-	}
+
 	va_start(args, format);
 	while (format && format[i])
 	{

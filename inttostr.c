@@ -2,7 +2,6 @@
 /** inttostr - converts ints to strings
  * @num: number
  * @str: string to store resulting string
- *
  * Return: pointer to string
  */
 char *inttostr(int num, char *str)
@@ -20,7 +19,6 @@ char *inttostr(int num, char *str)
 		str[i] = '\0';
 		return (str);
 	}
-
 	if (num < 0)
 	{
 		isNegative = 1;
@@ -32,17 +30,13 @@ char *inttostr(int num, char *str)
 		str[i++] = rem + '0';
 		num  = num / 10;
 	}
-
 	if (isNegative)
 	{
 		str[i++] = '-';
 	}
-
 	str[i] = '\0';
-
 	start = 0;
 	end = i - 1;
-
 	while (start < end)
 	{
 		temp = str[start];
@@ -51,6 +45,5 @@ char *inttostr(int num, char *str)
 		start++;
 		end --;
 	}
-
 	return (str);
 }

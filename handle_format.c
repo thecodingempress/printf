@@ -17,6 +17,9 @@ int handle_format(char format, va_list args)
 			return (print_string(args));
 		case '%':
 			return (print_percent());
+		case 'd':
+		case 'i':
+			return print_num(args);
 		default:
 			_putchar('%');
 			_putchar(format);
