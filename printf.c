@@ -2,15 +2,15 @@
 #include <string.h>
 #include <stdarg.h>
 
-int print_char(va_list args);
-int print_string(va_list args);
-int print_percent();
-int handle_format(char format, va_list args);
-
 int _printf(const char *format, ...)
 {
 	size_t i = 0;
 	size_t j = 0;
+
+	int print_char(va_list args);
+	int print_string(va_list args);
+	int print_percent();
+	int handle_format(char format, va_list args);
 
 	va_list(args);
 	if (!format)
