@@ -5,6 +5,7 @@
 int print_char(va_list args);
 int print_string(va_list args);
 int print_percent();
+int handle_format(char format, va_list args);
 
 int _printf(const char *format, ...)
 {
@@ -21,22 +22,7 @@ int _printf(const char *format, ...)
 	{	if (format[i] == '%')
 		{
 			i++;
-			switch (format[i])
-			{
-				case 'c':
-					j += print_char(args);
-				       break;
-				case 's':
-				       j += print_string(args);
-				      break;
-				case '%':
-      				       j += print_percent();
-				       break;
-				default:
-				       _putchar('%');
-				       _putchar(format[i]);
-				       j += 2;
-			}
+			j += handle_format(format[i], args);
 		}
 		else
 		{
