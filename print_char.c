@@ -1,13 +1,16 @@
 #include "main.h"
+#include <stddef.h>
 #include <stdarg.h>
+
 /**
- * print_char - prints the char inputed with %c specifier
- * @args: arguments o evaluate
- * Return: number of chars printed
+ *
+ *
  */
-int print_char(va_list args)
+
+int print_char(void * argument)
 {
-    char c = va_arg(args, int);
-    _putchar(c);
-    return 1;
+	char c = *(char* )argument;
+	printf("The charact print_char gets: %c\n", c);
+	_putchar(c);
 }
+

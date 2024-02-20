@@ -1,40 +1,56 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stddef.h>
+#include <unistd.h>
 /**
- * _printf - prints out output to stdout
- * @format: string char with required format
- * Return: no of chars printed
+ * printf - main file that prints out to stad output
+ * @format: format specifier
+ *
+ * Return: the number of characters printed (excluding the null byte used to end output to strings)
  */
+
 int _printf(const char *format, ...)
 {
-	size_t i = 0;
-	size_t j = 0;
-
-	int print_char(va_list args);
-	int print_string(va_list args);
-	int print_percent(void);
-	int print_num(va_list args);
-	int handle_format(char format, va_list args);
-	va_list(args);
-	if (!format)
-		return (-1);
+	va_list args;
+	
+	int bytes, count, i;
+	i = 0;
+	count = 0;
+	bytes = 0;
+	function_picker print_funcs[1] = {
+		{'c', print_char}
+	};
 
 	va_start(args, format);
-	while (format && format[i])
+
+	if (format == NULL)
+		return (bytes);
+	
+	while (format[i] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[i] != '%')
 		{
-			i++;
-			j += handle_format(format[i], args);
+			write(1, &format[i], 1);
 		}
 		else
 		{
-			_putchar(format[i]);
-			j++;
+			i++;
+
+			while (count <= 1)
+			{
+				if (format[i] == print_funcs[count].specifier)
+				{
+					bytes += print_funcs[count].function_name(va_arg(args, void *));
+				}
+
+				count++;
+			}
+			count = 0;
 		}
+
 		i++;
 	}
+
 	va_end(args);
-	return (j);
+	return (bytes);
 }

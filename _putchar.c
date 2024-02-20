@@ -1,13 +1,9 @@
+#include <stddef.h>
+#include <stdarg.h>
 #include <unistd.h>
-#include <string.h>
-/**
- * _putchar - prints the characters given
- *
- * Return: 0
- */
 
-int _putchar(char w)
+int _putchar(char c)
 {
-	write(1, &w, 1);
+	write(1, &c, 1);
 	return (0);
 }
